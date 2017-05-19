@@ -11,7 +11,7 @@ var app             = express();
 // Express Configuration
 // -----------------------------------------------------
 // Sets the connection to MongoDB, needs db to be able to work
-// mongoose.connect("mongodb://localhost/MeanMapApp");
+mongoose.connect("mongodb://localhost/MeanMapApp");
 
 // Logging and Parsing
 app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
