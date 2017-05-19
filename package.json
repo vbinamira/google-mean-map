@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/vbinamira/google-mean-map/issues"
   },
-  "homepage": "https://github.com/vbinamira/google-mean-map#readme"
+  "homepage": "https://github.com/vbinamira/google-mean-map#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.10.0",
+    "morgan": "^1.8.1"
+  }
 }

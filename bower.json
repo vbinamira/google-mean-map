@@ -1,0 +1,23 @@
+{
+  "name": "google-mean-map",
+  "description": "Google Maps API integration using MEAN Stack",
+  "main": "index.js",
+  "authors": [
+    "Vince Binamira"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "mean",
+    "stack",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/vbinamira/google-mean-map",
+  "private": true,
+  "dependencies": {
+    "angular-route": "^1.6.4",
+    "angularjs-geolocation": "^0.1.1",
+    "bootstrap": "^3.3.7",
+    "modernizr": "^3.5.0",
+    "holderjs": "^2.9.4"
+  }
+}
