@@ -15,7 +15,23 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
 
     // Functions
     // ----------------------------------------------------------------------------
-    // Creates a new user based on the form fields
+    
+    // Get User's actual coordinates based on HTML5 at window load
+    geolocation.getLocation().then(function(data){
+
+        // Set the latitude and longitude equal to the HTML5 coordinates
+        coords = {lat:data.coords.latitude, long:data.coords.longitude};
+
+        // Display coordinates in location textboxes rounded to three decimal points
+        $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
+        $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
+
+        // Display message confirming that the coordinates verified.
+        $scope.formData.htmlverified = "Give me some dang, biscuits!!";
+
+        gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+
+    });
     
     // Get coordinates based on mouse click. When a click event is detected....
     $rootScope.$on("clicked", function(){
@@ -24,10 +40,11 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
         $scope.$apply(function(){
             $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
             $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
-            $scope.formData.htmlverified = "Nope (Thanks for spamming my map...)";
+            $scope.formData.htmlverified = "No, No";
         });
     });
 
+    // Creates a new user based on the form fields
     $scope.createUser = function() {
 
         // Grabs all of the text box fields
@@ -42,7 +59,7 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
 
         // Saves the user data to the db
         $http.post('/users', userData)
-            .success(function (data) {
+            .then(function(success) {
 
                 // Once complete, clear the form (except location)
                 $scope.formData.username = "";
@@ -52,9 +69,8 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
 
                 // Refresh the map with new data
                 gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-            })
-            .error(function (data) {
-                console.log('Error: ' + data);
+            },function(error){
+               console.log('Error: ' + error); 
             });
     };
 });
