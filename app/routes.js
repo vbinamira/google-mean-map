@@ -13,11 +13,13 @@ module.exports = function(app) {
         // Uses Mongoose schema to run the search (empty conditions)
         var query = User.find({});
         query.exec(function(err, users){
-            if(err)
+            if(err) {
                 res.send(err);
-
+            }
             // If no errors are found, it responds with a JSON of all users
-            res.json(users);
+            else {
+              res.json(users);  
+            }
         });
     });
 
@@ -29,11 +31,13 @@ module.exports = function(app) {
         var newuser = new User(req.body);
         // New User is saved in the db.
         newuser.save(function(err){
-            if(err)
+            if(err){
                 res.send(err);
-
+            }
             // If no errors are found, it responds with a JSON of the new user
-            res.json(req.body);
+            else{
+               res.json(req.body); 
+            }
         });
     });
 
@@ -92,10 +96,13 @@ module.exports = function(app) {
         
         // Execute Query and Return the Query Results
         query.exec(function(err, users){
-            if(err)
+            if(err){
                 res.send(err);
+            }
             // If no errors, respond with a JSON of all users that meet the criteria
-            res.json(users);
+            else{
+                res.json(users);
+            }
         });
     });
 };  
