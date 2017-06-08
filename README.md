@@ -17,5 +17,4 @@ MEAN setup for Google Maps API
 * All these are in the package.json file, once node is installed run npm install in the project root folder *
 
 # Needs to be Worked on:
-1. Create new user
-2. Get User Locations
+1. Partials not Changing
